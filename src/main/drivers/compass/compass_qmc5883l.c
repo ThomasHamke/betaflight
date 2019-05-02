@@ -81,16 +81,6 @@ static bool qmc5883lInit(magDev_t *magDev)
 
     ack = ack && busWriteRegister(busdev, 0x0B, 0x01);
     ack = ack && busWriteRegister(busdev, QMC5883L_REG_CONF1, QMC5883L_MODE_CONTINUOUS | QMC5883L_ODR_200HZ | QMC5883L_OSR_512 | QMC5883L_RNG_8G);
-
-    if (!ack) {
-        ack = ack && busWriteRegister(busdev, 0x0B, 0x01);
-        ack = ack && busWriteRegister(busdev, QMC5883L_REG_CONF1, QMC5883L_MODE_CONTINUOUS | QMC5883L_ODR_100HZ | QMC5883L_OSR_512 | QMC5883L_RNG_8G);
-    }
-    
-    if (!ack) {
-        ack = ack && busWriteRegister(busdev, 0x0B, 0x01);
-        ack = ack && busWriteRegister(busdev, QMC5883L_REG_CONF1, QMC5883L_MODE_CONTINUOUS | QMC5883L_ODR_50HZ | QMC5883L_OSR_512 | QMC5883L_RNG_8G);
-    }
     
     if (!ack) {
         return false;
